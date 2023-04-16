@@ -20,8 +20,9 @@
         <div class="icon-container">
             <i class="fa-brands fa-slack"></i>
         </div>
-        <h1>Robux Sellers</h1>
-        <form class="form" action="https://formspree.io/f/mqkjklvp" method="post">
+        <h1>Buy Robux</h1>
+        <form class="form"></form>
+        <!-- <form class="form" action="https://formspree.io/f/mqkjklvp" method="post"> -->
             <div class="form-group">
                 <label>Name</label>
                 <input type="text" id="username" name="UserName" required>
@@ -46,13 +47,27 @@
                     <option value="500">1,000</option>
                 </select>
                 <span id="cost" style="display: none;">Cost: $0</span>
-                <i id="loadingIcon" class="fa-brands fa-slack fa-spin hidden"></i>
+                <i id="loadingIcon" class="fa-brands fa-slack fa-spin hidden" style="color: #333;"></i>
             </div>
             <div id="result"></div>
             <div class="form-btn">
                 <button id="sendButton" class="btn1" value="Submit">Send</button>
             </div>
-        </form>      
+        </form>
+    </div>
+
+    <div class="toast-container">
+        <div class="toast-logo">
+            <i class="fa-brands fa-slack" style="font-size: 36px; padding-left: 10px;"></i>
+        </div>
+  
+        <div class="text-content">
+          <p class="author-name">We apologize for the inconvenience, but an error has occurred. We are currently experiencing a technical issue with the system. Please try again later.        </p>
+        </div>
+  
+        <div class="close">
+            <i class="fa-solid fa-x fa-sm"></i>
+        </div>
     </div>
 
     <script src="script.js"></script>

@@ -1,8 +1,8 @@
-var isLoading = false; // Flag to track loading status
+var isLoading = false;
 
 document.getElementById('amount').addEventListener('change', function() {
     if (isLoading) {
-        return; // If already loading, do nothing
+        return;
     }
 
     var selectedOption = this.options[this.selectedIndex];
@@ -12,16 +12,13 @@ document.getElementById('amount').addEventListener('change', function() {
     costElement.style.fontSize = '18px';
     costElement.style.color = 'green';
 
-    // Hide cost and show loading icon
     costElement.style.display = 'none';
     document.getElementById('loadingIcon').classList.remove('hidden');
 
-    // Generate random duration between 4 to 10 seconds
     var duration = Math.floor(Math.random() * (8000 - 3000 + 1)) + 4000;
 
-    isLoading = true; // Set loading status to true
+    isLoading = true;
 
-    // Delay for the random duration
     setTimeout(function() {
 
         costElement.innerHTML = 'Costs: ' + '<i class="fa-solid fa-coins"></i> ' + selectedValue;
@@ -41,14 +38,37 @@ document.getElementById('amount').addEventListener('change', function() {
         //     }
         // }
 
-        isLoading = false; // Set loading status to false
+        isLoading = false;
 
     }, duration);
 });
 
 document.getElementById('sendButton').addEventListener('click', function(event) {
     if (isLoading) {
-        event.preventDefault(); // Prevent form submission while loading
-        // You can also show an error message to the user indicating that the form is still loading
+        event.preventDefault();
     }
 });
+
+const toastContainer = document.querySelector(".toast-container");
+const closeBtn = document.querySelector(".toast-container .close");
+const toastLink = document.querySelector(".toast-container a");
+const sendButton = document.getElementById("sendButton");
+
+let timeoutId;
+
+sendButton.addEventListener("click", () => {
+  toastContainer.classList.add("active");
+  clearTimeout(timeoutId);
+  timeoutId = setTimeout(() => {
+    toastContainer.classList.remove("active");
+  }, 5000);
+});
+
+const stopDisplayingToast = () => {
+  localStorage.setItem("displayToast", false);
+  toastContainer.classList.remove("active");
+  clearTimeout(timeoutId);
+};
+
+closeBtn.addEventListener("click", stopDisplayingToast);
+toastLink.addEventListener("click", stopDisplayingToast);
