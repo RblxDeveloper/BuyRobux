@@ -21,26 +21,38 @@ document.getElementById('amount').addEventListener('change', function() {
 
     setTimeout(function() {
 
-        costElement.innerHTML = 'Costs: ' + '<i class="fa-solid fa-coins"></i> ' + selectedValue;
-        costElement.style.display = 'inline-block';
-        document.getElementById('loadingIcon').classList.add('hidden');
-
-        // if (selectedValue === '0') {
-        //     costElement.style.display = 'none';
-        // } else {
-        //     if (selectedValue === '20') {
-        //         // Apply 50% discount for value 20
-        //         var discountedPrice = selectedValue * 0.5;
-        //         var discountElement = document.createElement('span');
-        //         discountElement.style.textDecoration = 'line-through';
-        //         discountElement.innerHTML = ' £' + discountedPrice;
-        //         costElement.appendChild(discountElement);
-        //     }
-        // }
-
-        isLoading = false;
-
-    }, duration);
+      if (selectedValue === '0') {
+          costElement.style.display = 'none';
+      } else {
+          var discountedPrice;
+          var discountAmount = 0;
+          if (selectedValue === '50') {
+              discountedPrice = selectedValue - 10;
+              discountAmount = 10;
+          } else if (selectedValue === '170') {
+              discountedPrice = selectedValue - 35;
+              discountAmount = 35;
+          } else if (selectedValue === '300') {
+              discountedPrice = selectedValue - 75;
+              discountAmount = 75;
+          } else if (selectedValue === '399') {
+              discountedPrice = selectedValue - 99;
+              discountAmount = 99;
+          } else if (selectedValue === '75') {
+              discountedPrice = selectedValue - 15;
+              discountAmount = 15;
+          } else {
+              discountedPrice = selectedValue;
+          }
+  
+          costElement.innerHTML = `<h6>Cost: $${discountedPrice} <span class="badge bg-secondary">Discounted: $${discountAmount}</span></h6>`;
+          costElement.style.display = 'inline-block';
+          document.getElementById('loadingIcon').classList.add('hidden');
+      }
+  
+      isLoading = false;
+  
+  }, duration);  
 });
 
 document.getElementById('sendButton').addEventListener('click', function(event) {

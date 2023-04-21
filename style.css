@@ -237,3 +237,44 @@ a {
     cursor: pointer;
     padding-right: 10px;
   }
+
+  h5 {
+    display: inline-block;
+    background-color: #f8f9fa;
+    padding: 10px;
+    border-radius: 5px;
+  }
+
+  h6 {
+    display: inline-block;
+    background-color: #fae69e;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    vertical-align: middle;
+    justify-content: center;
+  }
+  
+  .badge {
+    display: inline-block;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    border-radius: 10px;
+    background-color: #222;
+    color: #fff;
+    margin-left: 5px;
+  }
+
+  .event-banner {
+    background-color: #f2c316;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+  }
